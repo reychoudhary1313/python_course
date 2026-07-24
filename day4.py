@@ -1,9 +1,9 @@
-x=["apple","banana"]
-y=["apple","banana"]
-z=x
+list1=["apple","banana"]
+list2=["apple","banana"]
+list_check=list1
 
-print(x is z)
-print(x is y)
-print(x == y)
+print(list1 is list_check)
+print(list1 is list2)
+print(list1 == list2)
 
-print(x is not y)
+print(list1 is not list2)

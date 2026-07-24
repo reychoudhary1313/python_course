@@ -8,9 +8,9 @@ birth_year=int(input("enter your birthyear :"))
 age=2026-birth_year
 print("Your age is :",age)
 
-c=int(input("enter a temperature in celsius :"))
-f=(c*9/5)+32
-print("Temperature in fahrenheit :",f)
+celsius=int(input("enter a temperature in celsius :"))
+farenheit=(celsius*9/5)+32
+print("Temperature in fahrenheit :",farenheit)
 
 item_name=input("enter the item name :")
 price=int(input("enter the price of the item :"))

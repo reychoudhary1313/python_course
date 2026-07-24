@@ -1,5 +1,5 @@
-a = "Arjen Robben"
-print(a.upper())
+name = "Arjen Robben"
+print(name.upper())
 
 favourite_movies = ["housefull 4","maidaan","dhurandhar","84","phir hera pheri"]
 print(favourite_movies[0])

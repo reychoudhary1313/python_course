@@ -71,7 +71,7 @@ def build_contact(name, phone, email):
 new_contact = build_contact("Zara", "9123456789", "zara@email.com")
 print(new_contact["phone"])
 
-x = {"apple","banana","cherry"}
-y = {"google","microsoft","apple"}
-z = x.intersection(y)
-print(z)
+fruits = {"apple","banana","cherry"}
+companies = {"google","microsoft","apple"}
+intersect = fruits.intersection(companies)
+print(intersect)

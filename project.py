@@ -30,59 +30,64 @@ def find_student(students,name):
 print(find_student(students,"Reyansh"))
 
 
-
-students = {}
-grades = set()
-
 def students_in_grade(students, grade):
-    names = []
-
+    matches = []
     for name in students:
-        if students[name]["Grade"] == grade:
-            names.append(name)
+        if students[name]["grade"] == grade:
+            matches.append(name)
+    return matches
 
-    return names
+
+def get_all_grades(students):
+    grades = set()
+    for name in students:
+        grades.add(students[name]["grade"])
+    return grades
+
+
+# --- Main menu ---
 
 while True:
-    print("1. Add Student")
-    print("2. Search Student")
-    print("3. List Students")
-    print("4. Show Students in a Grade")
+    print("\n--- Student Database Menu ---")
+    print("1. View all students")
+    print("2. Add a student")
+    print("3. Search for a student")
+    print("4. Find students by grade")
     print("5. Exit")
 
-    choice = input("Enter your choice: ")
+    choice = input("Choose an option (1-5): ")
 
     if choice == "1":
-        name = input("Enter name: ")
-        age = int(input("Enter age: "))
-        grade = input("Enter grade: ")
-
-        students[name] = {
-            "Age": age,
-            "Grade": grade
-        }
-
-        grades.add(grade)
+        print_all_students(students)
 
     elif choice == "2":
-        name = input("Enter student name: ")
-
-        if name in students:
-            print(students[name])
-        else:
-            print("Student not found.")
+        name  = input("Enter student name: ")
+        age   = int(input("Enter age: "))
+        grade = input("Enter grade (e.g. 9th): ")
+        students = add_student(students, name, age, grade)
+        print(name + " added successfully.")
 
     elif choice == "3":
-        for name in students:
-            print(name, students[name])
+        name   = input("Enter student name to search: ")
+        result = find_student(students, name)
+        if result == "Not found":
+            print("Student not found.")
+        else:
+            print(name + ": Age " + str(result["age"]) + ", Grade " + result["grade"])
 
     elif choice == "4":
-        grade = input("Enter grade: ")
-        print(students_in_grade(students, grade))
+        grade   = input("Enter grade to search (e.g. 9th): ")
+        matches = students_in_grade(students, grade)
+        if len(matches) == 0:
+            print("No students found in grade " + grade)
+        else:
+            print("Students in grade " + grade + ": " + ", ".join(matches))
 
     elif choice == "5":
+        all_grades = get_all_grades(students)
+        print("\nGrades represented in this database: " + str(all_grades))
+        print("Goodbye!")
         break
 
     else:
-        print("Invalid choice.")
-
+        print("Invalid choice. Please enter 1 to 5.")
